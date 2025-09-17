@@ -1,0 +1,7 @@
+:root{--bg:#0b1220;--panel:#0f172a;--txt:#e5e7eb;--muted:#9aa4b2;--border:#1f2937}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 ui-sans-serif,system-ui}
+  .wrap{max-width:980px;margin:40px auto;padding:0 16px}
+  .card{background:color-mix(in srgb,var(--panel) 88%, transparent);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin:14px 0}
+  h1{margin:0 0 8px 0} .muted{color:var(--muted)} a{color:#8ddbf0;text-decoration:none}
+  table{width:100%;border-collapse:collapse} th,td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
+  .tags{display:flex;flex-wrap:wrap;gap:6px} .tag{border:1px solid var(--border);border-radius:10px;padding:.15rem .5rem;background:color-mix(in srgb,var(--panel) 94%, transparent);font-size:.85rem}
