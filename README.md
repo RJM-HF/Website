@@ -13,19 +13,15 @@
       <a href="https://www.rfc-editor.org/rfc/rfc4033"><img alt="RFC 4033" src="https://img.shields.io/badge/RFC%204033-DNSSEC-8b5cf6"></a>
     </p>
   </br>
-<h2>How it’s built</h2>
 
-A minimal, security-first landing page for homefortress.space.
-Fronted by Cloudflare (headers, HSTS, TLS, Workers/KV) and served from GitHub Pages.
 
 </div>
 Quick links
 
-Website: https://www.homefortress.space/
+<a href="https://www.homefortress.space/">HomeFortress Website</a>
+<a href="https://www.homefortress.space/cve-monitor">CVE Monitor</a>
+<a href="https://www.homefortress.space/csaf-feed">CSAF Feed</a>
 
-CVE Monitor: /cve-monitor.html
-
-CSAF Feed: /csaf-feed.html
   </br>
 
 
