@@ -39,7 +39,7 @@ Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worke
 </br>
 
 ## Content Security Policy (CSP)
-<p align="center">
+<p align="center"> </br>
 To enhance the security of the front-end, a Content Security Policy (CSP) is enforced. </br>
 This is an essential security layer that helps to mitigate Cross-Site Scripting (XSS) and other data injection  </br>
 attacks by specifying which sources of content are trusted and allowed to be loaded by the browser. </br></br>
@@ -48,9 +48,9 @@ attacks by specifying which sources of content are trusted and allowed to be loa
 The policy is implemented as a response header, which is configured directly at Cloudflare. </br>
 This is done using a **Modify Response Header** rule under the **Transform** section, </br>
 ensuring the CSP is applied to all pages before they reach the user's browser.
-</p>
+</p> </br></br>
 
-<strong>The CSP headers are set at Cloudflare (Transform → Modify response header)</strong>
+<strong align="center">The CSP headers are set at Cloudflare (Transform → Modify response header)</strong>
 
 ## <h3>License</h3>
 [MIT License](https://en.wikipedia.org/wiki/MIT_License)
