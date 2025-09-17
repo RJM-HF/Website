@@ -32,11 +32,19 @@ Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worke
     /.well-known/pgp-key.txt                 Public PGP key
     /.well-known/csaf/index.json             CSAF index
     /.well-known/csaf/provider-metadata.json CSAF provider metadata
-    /.well-known/dnssec.json                 DNSSEC info (optional)
+    /.well-known/dnssec.json                 DNSSEC details
     /security.txt, /pgp-key.txt              Friendly root aliases that map to the well-known paths
-    Security headers
 </br>
-Set at Cloudflare (Transform → Modify response header) to handle CSP
 
-<h3>License</h3>
+## Content Security Policy (CSP)
+
+To enhance the security of the front-end, a Content Security Policy (CSP) is enforced.
+This is an essential security layer that helps to mitigate Cross-Site Scripting (XSS) and other data injection attacks by specifying which sources of content are trusted and allowed to be loaded by the browser.
+
+The policy is implemented as a response header, which is configured directly at Cloudflare. This is done using a **Modify Response Header** rule under the **Transform** section, ensuring the CSP is applied to all pages before they reach the user's browser.
+
+The CSP headers are set at Cloudflare (Transform → Modify response header)
+
+
+## <h3>License</h3>
 - [MIT License](https://en.wikipedia.org/wiki/MIT_License)
