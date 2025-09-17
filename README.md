@@ -15,52 +15,27 @@
   </br>
 
 
-</div>
-Quick links
+</div> </br>
 
+Quick links:
 - [HomeFortress Website](https://www.homefortress.space/) </br>
 - [CVE Monitor](https://www.homefortress.space/cve-monitor) </br>
 - [CSAF Feed](https://www.homefortress.space/csaf-feed) </br>
+</br>
 
-  </br>
+Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worker.
 
-
-Static site in this repo (index.html, /assets/main.css, images in /img).
-
-GitHub Pages hosts the content.
-
-Cloudflare sits in front:
-
-Transform Rules set security headers (CSP, HSTS, etc.).
-
-Minimum TLS enforced at the edge.
-
-Worker + KV serves well-known security files (MTA-STS, security.txt, CSAF) and handles apex → www redirects.
-
-# <h3 align="center">Repository layout</h3>
-  ├─ assets/</br>
-  │  └─ main.css</br>
-  ├─ img/</br>
-  │  ├─ hf-logo.png</br>
-  │  ├─ favicon-16x16.png</br>
-  │  └─ favicon-32x32.png</br>
-  ├─ cve-monitor.html</br>
-  ├─ csaf-feed.html</br>
-  └─ index.html</br></br>
-
-
-Note: /.well-known/* assets are stored in Cloudflare KV and served by the Worker (not in this repo).
-
-Well-known endpoints
-Path	Purpose
-/.well-known/mta-sts.txt	MTA-STS policy (HTTPS)
-/.well-known/security.txt	Security contact & policy
-/.well-known/pgp-key.txt	Public PGP key
-/.well-known/csaf/index.json	CSAF index
-/.well-known/csaf/provider-metadata.json	CSAF provider metadata
-/.well-known/dnssec.json	DNSSEC info (optional)
-/security.txt, /pgp-key.txt	Friendly root aliases that map to the well-known paths
-Security headers
+## Well-known endpoints
+    <p>Path	Purpose
+    /.well-known/mta-sts.txt	MTA-STS policy (HTTPS)
+    /.well-known/security.txt	Security contact & policy
+    /.well-known/pgp-key.txt	Public PGP key
+    /.well-known/csaf/index.json	CSAF index
+    /.well-known/csaf/provider-metadata.json	CSAF provider metadata
+    /.well-known/dnssec.json	DNSSEC info (optional)
+    /security.txt, /pgp-key.txt	Friendly root aliases that map to the well-known paths
+    Security headers
+    </p>
 
 Set at Cloudflare (Transform → Modify response header):
 
