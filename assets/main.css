@@ -75,7 +75,7 @@
       color: var(--txt);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 0.25rem 0.65rem;
+      padding: 0.50rem 0.65rem;
       font-size: 0.82rem;
       font-weight: 500;
       box-shadow: 0 0 12px rgba(5, 116, 131, 0.2);
