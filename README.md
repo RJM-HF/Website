@@ -42,15 +42,15 @@ Minimum TLS enforced at the edge.
 Worker + KV serves well-known security files (MTA-STS, security.txt, CSAF) and handles apex → www redirects.
 
 # <h3 align="center">Repository layout</h3>
-  ├─ assets/
-  │  └─ main.css
-  ├─ img/
-  │  ├─ hf-logo.png
-  │  ├─ favicon-16x16.png
-  │  └─ favicon-32x32.png
-  ├─ cve-monitor.html
-  ├─ csaf-feed.html
-  └─ index.html
+  ├─ assets/</br>
+  │  └─ main.css</br>
+  ├─ img/</br>
+  │  ├─ hf-logo.png</br>
+  │  ├─ favicon-16x16.png</br>
+  │  └─ favicon-32x32.png</br>
+  ├─ cve-monitor.html</br>
+  ├─ csaf-feed.html</br>
+  └─ index.html</br></br>
 
 
 Note: /.well-known/* assets are stored in Cloudflare KV and served by the Worker (not in this repo).
