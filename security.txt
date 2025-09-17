@@ -1,0 +1,7 @@
+Contact:                mailto:security@homefortress.space
+Encryption:             https://www.homefortress.space/.well-known/pgp-key.txt
+Acknowledgments:        https://www.homefortress.space/security/acknowledgments
+Policy:                 https://www.homefortress.space/security/policy
+Preferred-Languages:    en, af
+Canonical:              https://www.homefortress.space/.well-known/security.txt
+Expires:                2026-09-16T23:59:59Z
