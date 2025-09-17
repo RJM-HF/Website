@@ -78,7 +78,7 @@
     /* ---------- Hero card ---------- */
     .wrap{min-height:100dvh; display:grid; place-items:center; padding: clamp(20px, 4vw, 40px)}
     .card{
-      width:min(940px, 92vw);
+      width:min(55%, 92vw);
       background: color-mix(in srgb, var(--panel) 88%, transparent);
       border:1px solid var(--border);
       border-radius:22px;
@@ -91,11 +91,27 @@
     @media (max-width:860px){ .card{ grid-template-columns:1fr } }
 
     .brand{display:flex; align-items:center; gap:12px; color:var(--txt); font-weight:700; letter-spacing:.2px}
-    .badge{
-      inline-size:34px; block-size:34px; border-radius:10px;
-      display:grid; place-items:center;
-      background:linear-gradient(135deg, var(--accent), #22d3ee);
-      box-shadow:0 8px 24px rgba(34,211,238,.28);
+    .badge {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      color: var(--txt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      box-shadow: 0 0 12px rgba(5, 116, 131, 0.2);
+      white-space: nowrap;
+    }
+    .badge:hover {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      color: var(--txt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      box-shadow: 0 0 12px rgba(2, 218, 233, 0.904);
+      white-space: nowrap;
     }
     .title{
       font-size:clamp(28px, 6vw, 44px);
@@ -105,25 +121,39 @@
     .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:4px}
     .btn{
       display:inline-flex; align-items:center; gap:.6rem;
-      border:1px solid var(--border); padding:.8rem 1.1rem;
-      border-radius:14px; background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border:1px solid var(--border); padding:0.6rem 0.5rem;
+      border-radius:8px; background: color-mix(in srgb, var(--panel) 70%, transparent);
       box-shadow:var(--glow);
       transform:translateZ(0);
     }
-    .btn:hover{ transform: translateY(-2px) }
-    .btn.primary{ background:linear-gradient(135deg, var(--accent), #22d3ee); color:#fff; border:0 }
-
+    .btn:hover{transform: translateY(-2px); background:linear-gradient(135deg, var(--accent), #058335); color:#baffc4; border:0 }
+    .btn.report{transform: translateY(-2px); background:linear-gradient(135deg, var(--accent), #c00606); color:#caecec; border:0 }
     .logo{
       justify-self:center;
-      inline-size:160px; block-size:160px;
+      inline-size:190px; block-size:190px;
       border-radius:50%; overflow:hidden;
       display:grid; place-items:center;
-      background: radial-gradient(70% 70% at 32% 28%, #1f2937, #0f172a);
-      border:1px solid var(--border);
+      background: radial-gradient(70% 70% at 32% 28%, #10294d, #0f172a);
+      border:3px solid var(--border);
       box-shadow:var(--glow);
+      box-shadow: 0 0 40px #0e4274;
       transform:
         translate3d(calc(var(--mx)*6px), calc(var(--my)*8px), 0);
       transition: transform .12s linear;
+      transition-delay: 3s;
+    }
+    .logo:hover{
+      justify-self:center;
+      inline-size:200px; block-size:200px;
+      border-radius:50%; overflow:hidden;
+      display:grid; place-items:center;
+      background: radial-gradient(70% 70% at 32% 28%, #10294d, #0f172a);
+      border:3px solid var(--border);
+      box-shadow:var(--glow);
+      box-shadow: 0 0 40px rgb(35, 106, 199);
+      transform: translate3d(calc(var(--mx)*6px), calc(var(--my)*8px), 0);
+      transition: transform .12s linear;
+      transition-delay: 3s;
     }
     .logo img{ width:100%; height:100%; object-fit:cover; display:block }
 
@@ -149,15 +179,21 @@
         </div></br>
 
         <h1 class="title">HomeFortress</h1>
-        <h2>Security & Compliance</h2>
-        <p class="muted">Microsoft • Linux • Cloudflare • DNS • Automation</p></br>
-
+        <h2>RFC-Aligned Security Controls</h2>
+        <p class="muted">Compliance • Security</p>
+          <div class="badges" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0;">
+            <span class="badge">✓ RFC 7489 (DMARC)</span>
+            <span class="badge">✓ RFC 8461 (MTA-STS)</span>
+            <span class="badge">✓ RFC 6698 (DANE)</span>
+            <span class="badge">✓ RFC 6844 (CAA)</span>
+            <span class="badge">✓ RFC 4033 (DNSSEC)</span>
+          </div></br>
         <div class="cta">
-          <a class="btn primary" href="resume.html" rel="noopener">↳ View Résumé</a>
-          <a class="btn" href="#about" onclick="document.querySelector('html').scrollTo({top:document.body.scrollHeight,behavior:'smooth'});return false;">About</a>
-          <a class="btn" href="https://github.com/RJM-HF" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/ruan-maritz-8a3427176/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="mailto:ruan@homefortress.space">Contact</a>
+          <a class="btn report" href="mailto:advisory@homefortress.space" rel="noopener">Report an Issue</a>
+          <a class="btn" href="https://github.com/RJM-HF" target="_blank" rel="noopener">DNSSEC</a>
+          <a class="btn" href="https://github.com/RJM-HF" target="_blank" rel="noopener">DANE</a>
+          <a class="btn" href="https://www.linkedin.com/in/ruan-maritz-8a3427176/" target="_blank" rel="noopener">CVE Monitor</a>
+          <a class="btn" href="mailto:ruan@homefortress.space">CSAF Feed</a>
         </div>
       </div>
 
