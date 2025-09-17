@@ -1,8 +1,9 @@
 # <p align="center"> HomeFortress </p>
-## <p align="center"> Website · Security & Compliance </p>
-<p align="center">
-  <img src="https://github.com/RJM-HF/Mail-Security/blob/main/Media/mail-security-banner.png?raw=true" alt="Alt text"/>
-</p>
+## <p align="center"> Website · Security & Compliance
+    <p align="center">
+      <img src="https://github.com/RJM-HF/Mail-Security/blob/main/Media/mail-security-banner.png?raw=true" alt="Alt text"/>
+    </p>
+  </p>
 
 
 
