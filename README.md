@@ -33,13 +33,16 @@ Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worke
     /.well-known/csaf/index.json             CSAF index
     /.well-known/csaf/provider-metadata.json CSAF provider metadata
     /.well-known/dnssec.json                 DNSSEC details
-    /security.txt, /pgp-key.txt              Friendly root aliases that map to the well-known paths
+    /security.txt                            Channel for security researchers to report vulnerabilities
+    /pgp-key.txt                             PGP Encryption key
+    /bimi.svg                                BIMI vector image
 </br>
 
 ## Content Security Policy (CSP)
 <p align="center">
 To enhance the security of the front-end, a Content Security Policy (CSP) is enforced. </br>
-This is an essential security layer that helps to mitigate Cross-Site Scripting (XSS) and other data injection attacks by specifying which sources of content are trusted and allowed to be loaded by the browser.
+This is an essential security layer that helps to mitigate Cross-Site Scripting (XSS) and other </br>
+data injection attacks by specifying which sources of content are trusted and allowed to be loaded by the browser.
 
 The policy is implemented as a response header, which is configured directly at Cloudflare. This is done using a **Modify Response Header** rule under the **Transform** section, ensuring the CSP is applied to all pages before they reach the user's browser.
 </p>
