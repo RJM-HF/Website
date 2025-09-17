@@ -23,8 +23,6 @@ Quick links:
 - [CSAF Feed](https://www.homefortress.space/csaf-feed) </br>
 </br>
 
-Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worker.
-
 ## Well-known endpoints
     Path                                     Purpose
     /.well-known/mta-sts.txt                 MTA-STS policy (HTTPS)
@@ -37,6 +35,7 @@ Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worke
     /pgp-key.txt                             PGP Encryption key
     /bimi.svg                                BIMI vector image
 </br>
+Note: /.well-known/* assets are stored using Cloudflare KV and served by a Worker.
 
 ## Content Security Policy (CSP)
 <p align="center"> </br>
