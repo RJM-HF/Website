@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CSAF Feed · HomeFortress</title>
+<style>
+  :root{--bg:#0b1220;--panel:#0f172a;--txt:#e5e7eb;--muted:#9aa4b2;--border:#1f2937}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 ui-sans-serif,system-ui}
+  .wrap{max-width:980px;margin:40px auto;padding:0 16px}
+  .card{background:color-mix(in srgb,var(--panel) 88%, transparent);border:1px solid var(--border);border-radius:18px;padding:18px 20px;margin:14px 0}
+  h1{margin:0 0 8px 0} h2{margin:18px 0 10px} .muted{color:var(--muted)}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+  .badge{border:1px solid var(--border);border-radius:10px;padding:.22rem .6rem;background:color-mix(in srgb,var(--panel) 94%, transparent)}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th,td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
+  a{color:#8ddbf0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>CSAF Feed</h1>
+  <p class="muted">Live view of our CSAF provider metadata and published advisories/VEX.</p>
+
+  <div id="meta" class="card">Loading provider-metadata…</div>
+  <div id="advisories" class="card"><strong>Advisories / VEX</strong><div class="muted">Looking for an index…</div></div>
+</div>
+
+<script>
+(async function () {
+  const metaEl = document.getElementById('meta');
+  const advEl  = document.getElementById('advisories');
+
+  // 1) Load provider-metadata.json
+  const metaPaths = [
+    '/.well-known/csaf/provider-metadata.json',   // recommended location
+    '/csaf/provider-metadata.json'                // fallback
+  ];
+
+  let meta, metaUrl;
+  for (const p of metaPaths) {
+    try {
+      const r = await fetch(p, {cache:'no-store'});
+      if (r.ok) { meta = await r.json(); metaUrl = p; break; }
+    } catch {}
+  }
+
+  if (!meta) {
+    metaEl.innerHTML = `<strong>Provider metadata not found</strong>
+      <div class="muted">Expected at <code>/.well-known/csaf/provider-metadata.json</code>.</div>`;
+    return;
+  }
+
+  // Render provider details
+  const pub = meta.publisher || {};
+  const dist = meta.distributions || meta.distribution || [];
+  const keys = (meta.pgp_keys || meta.pgp_keys || meta.pgp || []).map(k => k.url || k).join(', ');
+  metaEl.innerHTML = `
+    <strong>Provider:</strong> ${pub.name || '—'} ${pub.category ? `(${pub.category})` : ''}<br>
+    <span class="muted">From:</span> ${pub.contact_details || pub.namespace || '—'}<br>
+    <span class="muted">Metadata:</span> <a href="${metaUrl}" target="_blank" rel="noopener">provider-metadata.json</a><br>
+    ${meta.mirror_on ? `<span class="muted">Mirror:</span> ${meta.mirror_on.map(u=>`<a href="${u}" target="_blank" rel="noopener">${u}</a>`).join(' · ')}` : ''}
+    ${meta.canonical ? `<div><span class="muted">Canonical:</span> ${meta.canonical}</div>` : ''}
+    ${keys ? `<div><span class="muted">PGP key(s):</span> ${keys}</div>` : ''}
+    ${Array.isArray(dist) && dist.length ? `<div class="badges">
+      ${dist.map(d => `<a class="badge" href="${d.url}" target="_blank" rel="noopener">${d.category||'dist'}</a>`).join('')}
+    </div>`:''}
+  `;
+
+  // 2) Find an index of advisories
+  // Common patterns: csaf-index.json, index.json, or rolie feed
+  const guessPaths = [
+    ...(dist.filter(d => /csaf/i.test(d.category||'') && d.url).map(d => d.url.replace(/\/+$/,'') + '/csaf-index.json')),
+    ...(dist.filter(d => /csaf/i.test(d.category||'') && d.url).map(d => d.url.replace(/\/+$/,'') + '/index.json')),
+    '/csaf/csaf-index.json',
+    '/csaf/index.json'
+  ];
+
+  let index, indexUrl;
+  for (const u of guessPaths) {
+    try {
+      const r = await fetch(u, {cache:'no-store'});
+      if (r.ok) { index = await r.json(); indexUrl = u; break; }
+    } catch {}
+  }
+
+  // 3) Render advisories (works with a simple index format)
+  // Expected minimal shape:
+  // { "documents": [ { "title": "...", "id": "...", "date": "2025-03-21", "category": "csaf_security_advisory"|"csaf_vex", "url": "/csaf/2025/xyz.json", "revision": "1" } ] }
+  if (!index || !Array.isArray(index.documents)) {
+    advEl.innerHTML = `<strong>Advisories / VEX</strong>
+      <div class="muted">No index found yet. Add <code>csaf-index.json</code> under your CSAF directory (e.g., <code>/csaf/csaf-index.json</code>).</div>`;
+    return;
+  }
+
+  const rows = index.documents
+    .sort((a,b)=>(b.date||'').localeCompare(a.date||''))
+    .map(d => `
+      <tr>
+        <td><a href="${d.url}" target="_blank" rel="noopener">${d.title||d.id}</a><br>
+          <span class="muted">${d.category || 'advisory'}${d.revision ? ` · rev ${d.revision}`:''}</span>
+        </td>
+        <td>${d.date ? new Date(d.date).toISOString().slice(0,10) : '—'}</td>
+      </tr>`).join('');
+
+  advEl.innerHTML = `
+    <strong>Advisories / VEX</strong>
+    <div class="muted">Index: <a href="${indexUrl}" target="_blank" rel="noopener">${indexUrl}</a></div>
+    <table>
+      <thead><tr><th>Document</th><th>Date</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="2">No documents yet.</td></tr>'}</tbody>
+    </table>`;
+})();
+</script>
+</body>
+</html>
