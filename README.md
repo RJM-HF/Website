@@ -18,7 +18,7 @@ CVE Monitor: /cve-monitor.html
 
 CSAF Feed: /csaf-feed.html
   </br>
-## <h3 align="center">RFC alignment</h3>
+<h3 align="center">RFC alignment</h3>
     <p align="center">
       <a href="https://www.rfc-editor.org/rfc/rfc7489"><img alt="RFC 7489" src="https://img.shields.io/badge/RFC%207489-DMARC-0ea5e9"></a>
       <a href="https://www.rfc-editor.org/rfc/rfc8461"><img alt="RFC 8461" src="https://img.shields.io/badge/RFC%208461-MTA--STS-22c55e"></a>
@@ -41,17 +41,16 @@ Minimum TLS enforced at the edge.
 
 Worker + KV serves well-known security files (MTA-STS, security.txt, CSAF) and handles apex → www redirects.
 
-Repository layout
-/
-├─ assets/
-│  └─ main.css                 # all styles (no inline CSS needed)
-├─ img/
-│  ├─ hf-logo.png
-│  ├─ favicon-16x16.png
-│  └─ favicon-32x32.png
-├─ cve-monitor.html
-├─ csaf-feed.html
-└─ index.html
+# <h3 align="center">Repository layout</h3>
+  ├─ assets/
+  │  └─ main.css
+  ├─ img/
+  │  ├─ hf-logo.png
+  │  ├─ favicon-16x16.png
+  │  └─ favicon-32x32.png
+  ├─ cve-monitor.html
+  ├─ csaf-feed.html
+  └─ index.html
 
 
 Note: /.well-known/* assets are stored in Cloudflare KV and served by the Worker (not in this repo).
