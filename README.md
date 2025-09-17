@@ -18,9 +18,9 @@
 </div>
 Quick links
 
-<a href="https://www.homefortress.space/" style="text-decoration: none; color: #30b35d;">HomeFortress Website</a>
-<a href="https://www.homefortress.space/cve-monitor" style="text-decoration: none; color: #30b35d;">CVE Monitor</a>
-<a href="https://www.homefortress.space/csaf-feed" style="text-decoration: none; color: #30b35d;">CSAF Feed</a>
+- [HomeFortress Website](https://www.homefortress.space/) </br>
+- [CVE Monitor](https://www.homefortress.space/cve-monitor) </br>
+- [CSAF Feed](https://www.homefortress.space/csaf-feed) </br>
 
   </br>
 
