@@ -70,45 +70,28 @@
     @media (max-width:860px){ .card{ grid-template-columns:1fr } }
 
     .brand{display:flex; align-items:center; gap:12px; color:var(--txt); font-weight:700; letter-spacing:.2px}
-    .badge {
-      background: color-mix(in srgb, var(--panel) 94%, transparent);
-      color: var(--txt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.50rem 0.65rem;
-      font-size: 0.82rem;
-      font-weight: 500;
-      box-shadow: 0 0 12px rgba(5, 116, 131, 0.2);
-      white-space: nowrap;
-    }
-    .badge:hover {
-      background: color-mix(in srgb, var(--panel) 94%, transparent);
-      color: var(--txt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.25rem 0.65rem;
-      font-size: 0.82rem;
-      font-weight: 500;
-      box-shadow: 0 0 12px rgba(2, 218, 233, 0.904);
-      white-space: nowrap;
-    }
-    /* RFC badges row */
-    .badges{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px 14px;        /* row-gap column-gap */
-      margin: 14px 0;
-    }
+    /* RFC/spec badges laid out on a tidy grid */
+   :root { --badge-min: 220px; }              /* tweak this to change column width */
    
-    /* optional: keep each chip nicely spaced even if a link wraps */
-    .badges .badge{
-      margin: 0;             /* rely on gap, not margin */
-      white-space: nowrap;
-    }
-    
-    @media (max-width: 520px){
-      .badges{ gap: 9px 10px; }
-    }
+   .badges{
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(var(--badge-min), 1fr));
+     gap: 12px 14px;                          /* row-gap | column-gap */
+     margin: 14px 0;
+     align-items: stretch;
+   }
+   
+   .badges a{ display:block }                 /* make each chip fill the grid cell */
+   
+   .badges .badge{
+     display:block;
+     text-align:center;
+     padding: .55rem .75rem;                  /* rely on gap, not margin */
+     white-space: nowrap;
+   }
+   @media (max-width: 520px){
+     :root { --badge-min: 180px; }            /* smaller columns on phones */
+   }
     .title{
       font-size:clamp(28px, 6vw, 44px);
       line-height:1.1; margin:0;
