@@ -92,6 +92,23 @@
       box-shadow: 0 0 12px rgba(2, 218, 233, 0.904);
       white-space: nowrap;
     }
+    /* RFC badges row */
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px 14px;        /* row-gap column-gap */
+      margin: 14px 0;
+    }
+   
+    /* optional: keep each chip nicely spaced even if a link wraps */
+    .badges .badge{
+      margin: 0;             /* rely on gap, not margin */
+      white-space: nowrap;
+    }
+    
+    @media (max-width: 520px){
+      .badges{ gap: 9px 10px; }
+    }
     .title{
       font-size:clamp(28px, 6vw, 44px);
       line-height:1.1; margin:0;
