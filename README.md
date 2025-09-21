@@ -6,7 +6,7 @@
 ## <p align="center"> Website · Security & Compliance </p>
 <h3 align="center">RFC alignment</h3>
     <p align="center">
-      <a href="https://www.rfc-editor.org/rfc/rfc7489"><img alt="RFC 7489" style="padding:2%" src="https://img.shields.io/badge/RFC%207489-DMARC-0ea5e9"></a>
+      <a href="https://www.rfc-editor.org/rfc/rfc7489"><img alt="RFC 7489" style="padding-right:10px" src="https://img.shields.io/badge/RFC%207489-DMARC-0ea5e9"></a>
       <a href="https://www.rfc-editor.org/rfc/rfc8461"><img alt="RFC 8461" src="https://img.shields.io/badge/RFC%208461-MTA--STS-22c55e"></a>
       <a href="https://www.rfc-editor.org/rfc/rfc6698"><img alt="RFC 6698" src="https://img.shields.io/badge/RFC%206698-DANE-16a34a"></a>
       <a href="https://www.rfc-editor.org/rfc/rfc6844"><img alt="RFC 6844" src="https://img.shields.io/badge/RFC%206844-CAA-f59e0b"></a>
